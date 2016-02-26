@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ThreeViewsInContainerView" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +16,163 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q0b-LQ-vzz">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NBz-NS-RRg">
+                                        <rect key="frame" x="209" y="40" width="182" height="29"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                            <segment title="Third"/>
+                                        </segments>
+                                    </segmentedControl>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SxQ-we-dPp">
+                                        <rect key="frame" x="0.0" y="88" width="600" height="512"/>
+                                        <connections>
+                                            <segue destination="LyA-3y-xqg" kind="embed" id="MIs-Vf-UWf"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="SxQ-we-dPp" secondAttribute="trailing" id="0K0-rq-aBv"/>
+                                    <constraint firstItem="SxQ-we-dPp" firstAttribute="leading" secondItem="Q0b-LQ-vzz" secondAttribute="leading" id="QG5-mB-RvQ"/>
+                                    <constraint firstItem="NBz-NS-RRg" firstAttribute="centerX" secondItem="Q0b-LQ-vzz" secondAttribute="centerX" id="RxU-cV-k5O"/>
+                                    <constraint firstItem="NBz-NS-RRg" firstAttribute="top" secondItem="Q0b-LQ-vzz" secondAttribute="top" constant="40" id="tL5-0X-xGi"/>
+                                    <constraint firstAttribute="bottom" secondItem="SxQ-we-dPp" secondAttribute="bottom" id="uEs-Yf-1z2"/>
+                                    <constraint firstItem="SxQ-we-dPp" firstAttribute="top" secondItem="NBz-NS-RRg" secondAttribute="bottom" constant="20" id="v8t-9m-SZd"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Q0b-LQ-vzz" secondAttribute="bottom" id="5W4-dg-kY1"/>
+                            <constraint firstAttribute="trailing" secondItem="Q0b-LQ-vzz" secondAttribute="trailing" id="AcJ-gy-i4r"/>
+                            <constraint firstItem="Q0b-LQ-vzz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="fOm-fq-3TW"/>
+                            <constraint firstItem="Q0b-LQ-vzz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="t9N-g9-5vd"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="segmented" destination="NBz-NS-RRg" id="7uc-1q-QL1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="221" y="339"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qf2-sd-fcC">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="LyA-3y-xqg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XMk-7L-HEO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="bc0-Ui-aTV" kind="relationship" relationship="rootViewController" id="EJR-Id-Kkm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YGR-MQ-6Bf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="1015"/>
+        </scene>
+        <!--First View Controller-->
+        <scene sceneID="4A6-eA-ZH6">
+            <objects>
+                <viewController id="bc0-Ui-aTV" customClass="FirstViewController" customModule="ThreeViewsInContainerView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gzz-9c-Juo"/>
+                        <viewControllerLayoutGuide type="bottom" id="i8W-ke-Hbj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8AP-al-FFR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWN-VH-kSm">
+                                <rect key="frame" x="20" y="20" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="iag-nO-xdX"/>
+                    <connections>
+                        <segue destination="hNu-Ak-wRc" kind="show" identifier="FirstToSecond" animates="NO" id="IE2-AB-bOz"/>
+                        <segue destination="d1x-v2-T4G" kind="show" identifier="FirstToThird" animates="NO" id="b8p-QZ-Lms"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cn-rE-qd8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="221" y="1674"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="Xzd-j6-aYu">
+            <objects>
+                <viewController id="hNu-Ak-wRc" customClass="SecondViewController" customModule="ThreeViewsInContainerView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o9w-i1-Lz2"/>
+                        <viewControllerLayoutGuide type="bottom" id="wF2-0k-EQx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kKr-TP-RI9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Second View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1q-yf-oa4">
+                                <rect key="frame" x="20" y="20" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="bc0-Ui-aTV" kind="show" identifier="SecondToFirst" animates="NO" id="z5Y-F9-ujZ"/>
+                        <segue destination="d1x-v2-T4G" kind="show" identifier="SecondToThird" animates="NO" id="mgr-02-wbo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uwm-T5-O7P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="950" y="1674"/>
+        </scene>
+        <!--Third View Controller-->
+        <scene sceneID="ewq-Si-LFK">
+            <objects>
+                <viewController id="d1x-v2-T4G" customClass="ThirdViewController" customModule="ThreeViewsInContainerView" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="q54-jV-2uF"/>
+                        <viewControllerLayoutGuide type="bottom" id="sXm-fD-XcD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3sR-fd-1IM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Third View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGu-yn-Xua">
+                                <rect key="frame" x="20" y="20" width="152" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="bc0-Ui-aTV" kind="show" identifier="ThirdToFirst" animates="NO" id="CSV-Dc-yFW"/>
+                        <segue destination="hNu-Ak-wRc" kind="show" identifier="ThirdToSecond" animates="NO" id="MYc-eW-CT5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bt5-Oh-cNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="2464"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="MYc-eW-CT5"/>
+        <segue reference="b8p-QZ-Lms"/>
+        <segue reference="CSV-Dc-yFW"/>
+    </inferredMetricsTieBreakers>
 </document>
